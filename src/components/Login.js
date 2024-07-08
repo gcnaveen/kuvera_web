@@ -26,7 +26,6 @@ function Login() {
     <div className="login-container">
       <header className="login-header">
         <img data-v-16b56381="" src="https://assets2.kuvera.in/production/atlantis/web/assets/img/kuvera-logo-dark.svg" alt="" className="logo"  />
-        {/* <img src="https://kuvera.in/assets/kuvera-logo.svg" alt="Kuvera Logo" className="logo" /> */}
       </header>
       <div className="login-content">
         <div className="login-form">
