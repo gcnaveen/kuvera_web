@@ -1,0 +1,60 @@
+/* Style for the overall portfolio container */
+.portfolio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  /* Style for the portfolio header */
+  .portfolio-header {
+    margin-bottom: 20px;
+    margin-right: auto;
+    text-align: center;
+    margin-left: 20px;
+  }
+  
+  /* Style for the portfolio content */
+  .portfolio-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Style for the start investing section */
+  .portfolio-start-investing {
+    text-align: center;
+    max-width: 400px;
+  }
+  
+  .investment-image {
+    width: 100px; 
+    margin-bottom: 20px;
+  }
+  
+  .investment-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .investment-option {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    width: 100%; 
+    text-align: center;
+    border: 1px solid;
+  }
+  
+  .investment-option h3 {
+    margin-bottom: 10px;
+  }
+  
+  .investment-option p {
+    color: #666;
+  }
+  

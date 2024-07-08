@@ -1,65 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import PortfolioItem from './PortfolioItem';
-import PortfolioForm from './PortfolioForm';
+import React from 'react';
+import './portfolio.css';
 
-const Portfolio = () => {
-  const [portfolios, setPortfolios] = useState([]);
+const dummyPortfolio = [
+  {
+    id: 1,
+    name: 'Tech Growth Fund',
+    type: 'Mutual Fund',
+    value: '$5,000',
+  },
+  {
+    id: 2,
+    name: 'High Yield Savings',
+    type: 'Fixed Deposit',
+    value: '$10,000',
+  },
+  {
+    id: 3,
+    name: 'Global Equity',
+    type: 'Stocks',
+    value: '$7,500',
+  },
+];
 
-  useEffect(() => {
-    axios.get('http://your-backend-url/api/portfolio/userId')
-      .then(response => {
-        setPortfolios(response.data);
-      })
-      .catch(error => {
-        console.error("There was an error fetching the portfolios!", error);
-      });
-  }, []);
-
-  const addPortfolio = (portfolio) => {
-    axios.post('http://your-backend-url/api/portfolio', portfolio)
-      .then(response => {
-        setPortfolios([...portfolios, response.data]);
-      })
-      .catch(error => {
-        console.error("There was an error adding the portfolio!", error);
-      });
-  };
-
-  const updatePortfolio = (id, updatedPortfolio) => {
-    axios.put(`http://your-backend-url/api/portfolio/${id}`, updatedPortfolio)
-      .then(response => {
-        setPortfolios(portfolios.map(portfolio => (portfolio._id === id ? response.data : portfolio)));
-      })
-      .catch(error => {
-        console.error("There was an error updating the portfolio!", error);
-      });
-  };
-
-  const deletePortfolio = (id) => {
-    axios.delete(`http://your-backend-url/api/portfolio/${id}`)
-      .then(() => {
-        setPortfolios(portfolios.filter(portfolio => portfolio._id !== id));
-      })
-      .catch(error => {
-        console.error("There was an error deleting the portfolio!", error);
-      });
-  };
-
+function Portfolio() {
   return (
-    <div>
-      <h1>Portfolio</h1>
-      <PortfolioForm addPortfolio={addPortfolio} />
-      {portfolios.map(portfolio => (
-        <PortfolioItem 
-          key={portfolio._id} 
-          portfolio={portfolio} 
-          updatePortfolio={updatePortfolio} 
-          deletePortfolio={deletePortfolio} 
-        />
-      ))}
+    <div className="portfolio-container">
+      <div className="portfolio-header">
+        <h1>Portfolio</h1>
+      </div>
+      <div className="portfolio-content">
+        <div className="portfolio-start-investing">
+        <img data-v-77c37184="" src="https://assets2.kuvera.in/production/atlantis/web/assets/img/no-investments.svg" class="b-portfolio-no-fund__no-fund-icon investment-image" />
+          
+          <h2>Start Investing!</h2>
+          <div className="investment-options">
+          {dummyPortfolio.map(item => (
+              <div className="investment-option">
+              <h3>{item.type}</h3>
+              <p>Explore & invest in {item.name}</p>
+            </div>
+            ))}
+            
+            <div className="investment-option">
+              <h3>Fixed Deposit</h3>
+              <p>Explore, compare and invest in best online FDs</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
   );
-};
+}
 
 export default Portfolio;
